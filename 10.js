@@ -7,6 +7,35 @@ function task10() {
   // Promise.any() приймає масив промісів які ми створили вище і вирішується, як тільки перший із цих промісів вирішується.
   // Якщо проміс виконаний успішно виводимо в консоль дані які він повертає
   // Якщо проміс виконаний з помилкою виводимо в консоль помилку
+   let promise1 = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 1");
+    }, 500);
+  });
+
+  
+  let promise2 = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 2");
+    }, 200);
+  });
+
+  let promise3 = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 3");
+    }, 300);
+  });
+
+  
+   Promise.any([promise1, promise2, promise3])
+    
+    .then((value) => {
+      console.log("Перший успішний проміс:", value);
+    })
+   
+    .catch((error) => {
+      console.error("Помилка:", error);
+    });
 }
 
 // Викликаємо функцію task10
